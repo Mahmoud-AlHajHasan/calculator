@@ -21,7 +21,7 @@ function operate(numOne, numTwo, operation) {
   displayValue = operation(numOne, numTwo)
   displayScreen.textContent = displayValue
   numOne = displayValue
-
+  writeOver = true
   //re-add
   operatorButtons.forEach(
     button => {
@@ -39,6 +39,20 @@ function populateDisplay() {
   }
   displayValue += this.textContent
   displayScreen.textContent = displayValue
+}
+
+function populateDisplayDot() {
+  if (writeOver) {
+    displayValue = ''
+    writeOver = false
+  }
+
+  
+
+  if (!(String(displayValue).split('').includes('.'))) {
+    displayValue += this.textContent
+    displayScreen.textContent = displayValue
+  }
 }
 
 function storeNumber() {
@@ -71,7 +85,7 @@ function switchWriteOver() {
     }
   )
 
-  equalButton.addEventListener("click", operate, {once:true})
+  equalButton.addEventListener("click", operate, { once: true })
 
 }
 
@@ -93,7 +107,8 @@ writeOver = false
 digitButtons.forEach(
   button => button.addEventListener("click", populateDisplay)
 )
-dotButton.addEventListener("click", populateDisplay, { once: true })
+
+dotButton.addEventListener("click", populateDisplayDot)
 
 // operator first time
 operatorButtons.forEach(
