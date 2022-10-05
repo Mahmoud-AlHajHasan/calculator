@@ -188,4 +188,10 @@ operatorButtons.forEach(
 
 
 clearButton.addEventListener("click",clear)
+document.addEventListener('keydown', (e)=> {if(e.key === 'Delete'){clear()}})
+
 minusButton.addEventListener("click",minus)
+document.addEventListener('keydown', (e)=> {if(e.key === 'm'){minus()}})
+
+
+
