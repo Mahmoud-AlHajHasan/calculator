@@ -151,6 +151,11 @@ function switchWriteOver() {
 
 }
 
+function minus() {
+  displayValue = -1 * +displayValue
+  displayScreen.textContent = displayValue
+}
+
 displayScreen = document.querySelector("#display > div")
 const clearButton = document.querySelector("#clear")
 const backspaceButton = document.querySelector("#backspace")
@@ -158,6 +163,7 @@ const operatorButtons = document.querySelectorAll(".operator")
 const digitButtons = document.querySelectorAll(".num")
 const dotButton = document.querySelector(".dot")
 const equalButton = document.querySelector(".equalSign")
+const minusButton = document.querySelector("#minus")
 
 let displayValue = ''
 let operatorUsed = ''
@@ -166,14 +172,12 @@ let y = ''
 let temp = ''
 writeOver = false
 
-// first input
 digitButtons.forEach(
   button => button.addEventListener("click", populateDisplay)
 )
 
 dotButton.addEventListener("click", populateDisplayDot)
 
-// operator first time
 operatorButtons.forEach(
   button => {
     button.addEventListener("click", storeNumber)
@@ -184,4 +188,4 @@ operatorButtons.forEach(
 
 
 clearButton.addEventListener("click",clear)
-
+minusButton.addEventListener("click",minus)

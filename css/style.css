@@ -24,6 +24,7 @@ body {
   gap: 2rem;
   padding: 2rem;
   height: 500px;
+  width: 500px;
 }
 
 #display {
@@ -57,7 +58,7 @@ body {
 }
 
 #clear {
-  width: 135px;
+  width: 125px;
 }
 
 #functions {
