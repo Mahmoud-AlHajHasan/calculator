@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -10,5 +10,160 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 }
 
+#calculator {
+  background-color: #27303d;
+  width: auto;
+  flex: 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+#display {
+  text-align: center;
+  flex: 2;
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 3rem;
+  width: 100%;
+}
+
+#display div {
+  background-color: #3882f6;
+  border-radius: 10px;
+  width: 100%;
+}
+
+#clearContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+#clear {
+
+}
+
+#functions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+#digits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 4;
+  order: -1
+
+}
+
+#numbers {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+}
+
+#rowOne,
+#rowTwo,
+#rowThree,
+#zeroDotEqual {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  width : 75px;
+  height: 40px;
+}
+
+#mainBody {
+  display: flex;
+  gap: 1rem;
+
+}
+
+
+
+/* COPIED */
+
+.button-4 {
+  appearance: none;
+  background-color: #FAFBFC;
+  border-radius: 10px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+}
+
+.button-4:hover {
+  background-color: #508ef1;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+}
+
+.button-4:active {
+  background-color: #3882f6;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button-4:focus {
+  outline: 1px transparent;
+}
+
+.button-4:before {
+  display: none;
+}
+
+.button-4:-webkit-details-marker {
+  display: none;
+}
+
+.button-4 {
+  background-color: #3882f6;
+  border-radius: 10px;
+  padding: 8px 32px;
+  min-width: max-content;
+  border: #FAFBFC 0px solid;
+  color: #FAFBFC;
+
+}
