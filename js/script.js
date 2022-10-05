@@ -24,6 +24,7 @@ function operate(oper, x2, y) {
     operator => operator.addEventListener("click", storeValueInDisplay,
       { once: true })
   )
+  
 }
 
 function populateDisplay(e) {
@@ -31,23 +32,24 @@ function populateDisplay(e) {
   displayScreen.textContent = displayValue
 }
 
-function storeValueInDisplay(e) {
-  x = +displayValue
-  displayValue = ''
-  operatorUsed = this.textContent
-  if (operatorUsed === '+') { operatorUsed = add };
-  if (operatorUsed === '-') { operatorUsed = subtract };
-  if (operatorUsed === '*') { operatorUsed = multiply };
-  if (operatorUsed === '/') { operatorUsed = divide };
-  dotBtns.forEach(
-    dotBtn => dotBtn.addEventListener("click", populateDisplay, { once: true })
-  )
-  operators.forEach(
-    operator => operator.addEventListener("click", operate,
-      { once: true })
-  )
+// function storeValueInDisplay(e) {
+//   displayValue = +displayValue
+//   displayValue = ''
+//   operatorUsed = this.textContent
+//   if (operatorUsed === '+') { operatorUsed = add };
+//   if (operatorUsed === '-') { operatorUsed = subtract };
+//   if (operatorUsed === '*') { operatorUsed = multiply };
+//   if (operatorUsed === '/') { operatorUsed = divide };
+//   dotBtns.forEach(
+//     dotBtn => dotBtn.addEventListener("click", populateDisplay, { once: true })
+//   )
+//   operators.forEach(
+//     operator => operator.addEventListener("click", operate,
+//       { once: true })
+//   )
+//   equalSign.addEventListener("click", operate,{once:true})
 
-}
+// }
 
 let displayValue = '';
 let x = ''
@@ -70,6 +72,9 @@ operators.forEach(
   operator => operator.addEventListener("click", storeValueInDisplay,
     { once: true })
 )
+
+const equalSign = document.querySelector(".equalSign")
+
 
 
 
