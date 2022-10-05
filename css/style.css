@@ -16,7 +16,6 @@ body {
 #calculator {
   background-color: #27303d;
   width: auto;
-  flex: 1;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -24,6 +23,7 @@ body {
   align-items: center;
   gap: 2rem;
   padding: 2rem;
+  height: 500px;
 }
 
 #display {
@@ -33,15 +33,20 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   font-size: 3rem;
   width: 100%;
+  height: 100%;
 }
 
 #display div {
   background-color: #3882f6;
   border-radius: 10px;
   width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #clearContainer {
@@ -51,9 +56,6 @@ body {
   gap: 1rem;
 }
 
-#clear {
-
-}
 
 #functions {
   display: flex;
