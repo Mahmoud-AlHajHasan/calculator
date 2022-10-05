@@ -20,6 +20,7 @@ function operate(oper, x2, y) {
    y = displayValue
   displayValue = oper(x, displayValue)
   displayScreen.textContent = displayValue
+  x = displayValue
   operators.forEach(
     operator => operator.addEventListener("click", storeValueInDisplay,
       { once: true })
@@ -32,24 +33,24 @@ function populateDisplay(e) {
   displayScreen.textContent = displayValue
 }
 
-// function storeValueInDisplay(e) {
-//   displayValue = +displayValue
-//   displayValue = ''
-//   operatorUsed = this.textContent
-//   if (operatorUsed === '+') { operatorUsed = add };
-//   if (operatorUsed === '-') { operatorUsed = subtract };
-//   if (operatorUsed === '*') { operatorUsed = multiply };
-//   if (operatorUsed === '/') { operatorUsed = divide };
-//   dotBtns.forEach(
-//     dotBtn => dotBtn.addEventListener("click", populateDisplay, { once: true })
-//   )
-//   operators.forEach(
-//     operator => operator.addEventListener("click", operate,
-//       { once: true })
-//   )
-//   equalSign.addEventListener("click", operate,{once:true})
+function storeValueInDisplay(e) {
+  x = +displayValue
+  displayValue = ''
+  operatorUsed = this.textContent
+  if (operatorUsed === '+') { operatorUsed = add };
+  if (operatorUsed === '-') { operatorUsed = subtract };
+  if (operatorUsed === '*') { operatorUsed = multiply };
+  if (operatorUsed === '/') { operatorUsed = divide };
+  dotBtns.forEach(
+    dotBtn => dotBtn.addEventListener("click", populateDisplay, { once: true })
+  )
+  operators.forEach(
+    operator => operator.addEventListener("click", operate,
+      { once: true })
+  )
+  equalSign.addEventListener("click", storeValueInDisplay,{once:true})
 
-// }
+}
 
 let displayValue = '';
 let x = ''
@@ -78,7 +79,8 @@ const equalSign = document.querySelector(".equalSign")
 
 
 
-// store pressed numbers in displayValue 
-// show displayed value 
-// store first number that user inputs in x when clicking operator
-// clear display with new clicks and add new eventlistener
+
+// click digit buttons > digits on display and in displayValue
+// click equal > nothing
+// click operator > displayValue saved in x and cleared, operator saved in operatorUsed
+// click digit buttons > 
