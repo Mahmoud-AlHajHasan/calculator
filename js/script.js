@@ -71,6 +71,8 @@ function switchWriteOver() {
     }
   )
 
+  equalButton.addEventListener("click", operate, {once:true})
+
 }
 
 displayScreen = document.querySelector("#display > div")
@@ -102,5 +104,5 @@ operatorButtons.forEach(
   }
 )
 
-// first equal
-equalButton.addEventListener("click", operate)
+
+
