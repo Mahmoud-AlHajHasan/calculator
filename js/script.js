@@ -17,3 +17,4 @@ function divide(x,y) {
 function operate(x,y,basicMathFunction) {
   return basicMathFunction(x,y)
 }
+
