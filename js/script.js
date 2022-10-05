@@ -18,12 +18,25 @@ function operate(x, y, z) {
   return z(x, y)
 }
 
+function populateDisplay() {
+  displayValue = + this.textContent
+  x = displayValue
+}
+
 displayScreen = document.querySelector("#display > div")
-clearButton = document.querySelector("#clear")
-undoButton = document.querySelector("#undo")
-operatorButtons = document.querySelectorAll(".operator")
-digitButtons = document.querySelectorAll(".num")
-dotButton = document.querySelector(".dot")
-equalButton = document.querySelector(".equalSign")
+const clearButton = document.querySelector("#clear")
+const undoButton = document.querySelector("#undo")
+const operatorButtons = document.querySelectorAll(".operator")
+const digitButtons = document.querySelectorAll(".num")
+const dotButton = document.querySelector(".dot")
+const equalButton = document.querySelector(".equalSign")
+
+let displayValue = ''
+let operatorUsed = ''
+
+
+// user input : click numbers and operators to operate
+// click more numbers and operators after last output
+// loop
 
 
