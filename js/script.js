@@ -20,7 +20,7 @@ function operate(numOne, numTwo, operation) {
   operation = operatorUsed
   displayValue = operation(numOne, numTwo)
   displayScreen.textContent = Math.round(displayValue * 100) / 100
-  if ((displayValue === Infinity || displayScreen.textContent === 'NaN') && (operation === divide) &&  (+numTwo===0) ) {
+  if ((displayValue === Infinity || displayScreen.textContent === 'NaN') && (operation === divide) && (+numTwo === 0)) {
     displayScreen.textContent = "stop you'll break me :("
   }
   numOne = displayValue
@@ -37,7 +37,7 @@ function operate(numOne, numTwo, operation) {
     button => button.removeEventListener("click", operateByOperator)
   )
 
-  if(displayScreen.textContent === 'NaN'){displayScreen.textContent = 'Error, reset.'}
+  if (displayScreen.textContent === 'NaN') { displayScreen.textContent = 'Error, reset.' }
 
 }
 
@@ -47,6 +47,21 @@ function clear() {
   displayValue = '';
   x = '';
   displayScreen.textContent = '';
+  operatorUsed = ''
+
+  operatorButtons.forEach(
+  button => {
+    button.removeEventListener("click", storeNumber)
+    button.removeEventListener("click", storeOperator)
+    button.removeEventListener("click", switchWriteOver)
+  }
+)
+
+equalButton.removeEventListener("click", operate, { once: true })
+
+operatorButtons.forEach(
+  button => button.removeEventListener("click", operateByOperator)
+)
 }
 
 function operateByOperator(numOne, numTwo, operation) {
@@ -55,17 +70,17 @@ function operateByOperator(numOne, numTwo, operation) {
   operation = operatorUsed
   displayValue = operation(numOne, numTwo)
   displayScreen.textContent = Math.round(displayValue * 100) / 100
-  if ((displayValue === Infinity) && operation === divide ) {
+  if ((displayValue === Infinity || displayScreen.textContent === 'NaN') && (operation === divide) && (+numTwo === 0)) {
     displayScreen.textContent = "stop you'll break me :("
   } numOne = displayValue
 
-  x = displayValue
   operatorUsed = this.getAttribute("kind")
   if (operatorUsed === "add") { operatorUsed = add }
   if (operatorUsed === "subtract") { operatorUsed = subtract }
   if (operatorUsed === "multiply") { operatorUsed = multiply }
   if (operatorUsed === "divide") { operatorUsed = divide }
   writeOver = true
+
   //re-add
   operatorButtons.forEach(
     button => {
@@ -74,6 +89,7 @@ function operateByOperator(numOne, numTwo, operation) {
       button.addEventListener("click", switchWriteOver)
     }
   )
+
 
 
 }
@@ -87,9 +103,18 @@ function populateDisplay() {
   displayValue += this.textContent
   displayScreen.textContent = displayValue
   backspaceButton.addEventListener("click", deleteOnce)
+
+  operatorButtons.forEach(
+    button => {
+      button.addEventListener("click", storeNumber)
+      button.addEventListener("click", storeOperator)
+      button.addEventListener("click", switchWriteOver)
+    }
+  )
 }
 
 function populateDisplayDot() {
+
   if (writeOver) {
     displayValue = ''
     writeOver = false
@@ -101,6 +126,16 @@ function populateDisplayDot() {
     displayValue += "."
     displayScreen.textContent = displayValue
   }
+
+
+
+  operatorButtons.forEach(
+    button => {
+      button.addEventListener("click", storeNumber)
+      button.addEventListener("click", storeOperator)
+      button.addEventListener("click", switchWriteOver)
+    }
+  )
 }
 
 function deleteOnce() {
