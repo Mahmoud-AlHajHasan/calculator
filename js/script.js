@@ -20,9 +20,9 @@ function operate(numOne, numTwo, operation) {
   operation = operatorUsed
   displayValue = operation(numOne, numTwo)
   displayScreen.textContent = Math.round(displayValue * 100) / 100
-  if (displayValue === Infinity && operation === divide){
-    displayScreen.textContent = "bro why divide by zero you'll break me :("
-  } 
+  if ((displayValue === Infinity || displayScreen.textContent === 'NaN') && (operation === divide) &&  (+numTwo===0) ) {
+    displayScreen.textContent = "stop you'll break me :("
+  }
   numOne = displayValue
   writeOver = true
   //re-add
@@ -36,6 +36,8 @@ function operate(numOne, numTwo, operation) {
   operatorButtons.forEach(
     button => button.removeEventListener("click", operateByOperator)
   )
+
+  if(displayScreen.textContent === 'NaN'){displayScreen.textContent = 'Error, reset.'}
 
 }
 
@@ -53,9 +55,9 @@ function operateByOperator(numOne, numTwo, operation) {
   operation = operatorUsed
   displayValue = operation(numOne, numTwo)
   displayScreen.textContent = Math.round(displayValue * 100) / 100
-  if (displayValue === Infinity && operation === divide){
-    displayScreen.textContent = "bro why divide by zero you'll break me :("
-  }  numOne = displayValue
+  if ((displayValue === Infinity) && operation === divide ) {
+    displayScreen.textContent = "stop you'll break me :("
+  } numOne = displayValue
 
   x = displayValue
   operatorUsed = this.getAttribute("kind")
@@ -72,7 +74,7 @@ function operateByOperator(numOne, numTwo, operation) {
       button.addEventListener("click", switchWriteOver)
     }
   )
-    
+
 
 }
 
@@ -92,11 +94,11 @@ function populateDisplayDot() {
     displayValue = ''
     writeOver = false
   }
-  backspaceButton.addEventListener("click", deleteOnce) 
+  backspaceButton.addEventListener("click", deleteOnce)
 
 
   if (!(String(displayValue).split('').includes('.'))) {
-    displayValue += this.textContent
+    displayValue += "."
     displayScreen.textContent = displayValue
   }
 }
@@ -123,17 +125,18 @@ function storeNumber() {
 }
 
 function storeOperator() {
-{  operatorUsed = this.getAttribute("kind")
-  if (operatorUsed === "add") { operatorUsed = add }
-  if (operatorUsed === "subtract") { operatorUsed = subtract }
-  if (operatorUsed === "multiply") { operatorUsed = multiply }
-  if (operatorUsed === "divide") { operatorUsed = divide }
-}
-operatorButtons.forEach(
-  button => {
-    button.removeEventListener("click", storeOperator)
+  {
+    operatorUsed = this.getAttribute("kind")
+    if (operatorUsed === "add") { operatorUsed = add }
+    if (operatorUsed === "subtract") { operatorUsed = subtract }
+    if (operatorUsed === "multiply") { operatorUsed = multiply }
+    if (operatorUsed === "divide") { operatorUsed = divide }
   }
-)
+  operatorButtons.forEach(
+    button => {
+      button.removeEventListener("click", storeOperator)
+    }
+  )
 }
 
 function switchWriteOver() {
@@ -187,10 +190,12 @@ operatorButtons.forEach(
 )
 
 
-clearButton.addEventListener("click",clear)
-document.addEventListener('keydown', (e)=> {if(e.key === 'Delete'){clear()}})
+clearButton.addEventListener("click", clear)
+document.addEventListener('keydown', (e) => { if (e.key === 'Delete') { clear() } })
 
-minusButton.addEventListener("click",minus)
-document.addEventListener('keydown', (e)=> {if(e.key === 'm'){minus()}})
+minusButton.addEventListener("click", minus)
+document.addEventListener('keydown', (e) => { if (e.key === 'm') { minus() } })
 
-document.addEventListener('keydown', (e) => {if(e.key === 'Backspace'){deleteOnce()}})
+document.addEventListener('keydown', (e) => { if (e.key === 'Backspace') { deleteOnce() } })
+
+document.addEventListener('keydown', (e) => { if (e.key === '.') { populateDisplayDot() } })
