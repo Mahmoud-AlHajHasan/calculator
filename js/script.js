@@ -172,11 +172,11 @@ function storeOperator() {
     if (operatorUsed === "multiply") { operatorUsed = multiply }
     if (operatorUsed === "divide") { operatorUsed = divide }
   }
-  operatorButtons.forEach(
-    button => {
-      button.removeEventListener("click", storeOperator)
-    }
-  )
+  // operatorButtons.forEach(
+  //   button => {
+  //     button.removeEventListener("click", storeOperator)
+  //   }
+  // )
 }
 
 function switchWriteOver() {
