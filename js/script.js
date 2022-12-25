@@ -246,7 +246,7 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Backspace') { delet
 document.addEventListener('keydown', (e) => { if (e.key === '.') { populateDisplayDot() } })
 
 
-
+// make a hidden button that changes value based on the keyboard number pressed then it uses the new value to populate the screen 
 
 
 // DONE SO FAR
